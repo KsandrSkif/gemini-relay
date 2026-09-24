@@ -3,4 +3,4 @@ main = "worker.js"
 compatibility_date = "2024-01-01"
 
 [vars]
-SECRET_KEY = "KsandrSkif-1801!"
+SECRET_KEY = "KsandrSkif1801"
