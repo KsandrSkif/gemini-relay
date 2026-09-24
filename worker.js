@@ -13,11 +13,14 @@ export default {
       return new Response('Expected WebSocket', { status: 426 });
     }
 
-    // 2. Проверяем секретный ключ (должен совпадать с ключом в приложении)
-    const authKey = request.headers.get('X-Auth-Key');
-    if (authKey !== env.SECRET_KEY) {
-      return new Response('Unauthorized', { status: 401 });
-    }
+  // 2. Проверяем секретный ключ (должен совпадать с ключом в приложении)
+const authKey = request.headers.get('X-Auth-Key');
+if (authKey !== env.SECRET_KEY) {
+  return new Response(
+    `Unauthorized. Got: "${authKey}", Expected: "${env.SECRET_KEY}"`,
+    { status: 401 }
+  );
+}
 
     // 3. Устанавливаем WebSocket-соединение
     const pair = new WebSocketPair();
